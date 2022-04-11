@@ -1,0 +1,166 @@
+basePath: /
+consumes:
+- application/json
+definitions:
+  AvailableCabs:
+    properties:
+      cab_id:
+        type: string
+        x-go-name: CabId
+      latitude:
+        format: double
+        type: number
+        x-go-name: Latitude
+      longitude:
+        format: double
+        type: number
+        x-go-name: Longitude
+    type: object
+    x-go-package: github.com/cab_booking_app/models
+  Booking:
+    properties:
+      booking_id:
+        format: int64
+        type: integer
+        x-go-name: BookingId
+      cab_id:
+        type: string
+        x-go-name: CabId
+      date_of_booking:
+        type: string
+        x-go-name: DateOfBooking
+      dest_latitude:
+        format: double
+        type: number
+        x-go-name: DestLatitude
+      dest_longitude:
+        format: double
+        type: number
+        x-go-name: DestLongitude
+      distance:
+        format: double
+        type: number
+        x-go-name: Distance
+      price:
+        format: double
+        type: number
+        x-go-name: Price
+      src_latitude:
+        format: double
+        type: number
+        x-go-name: SrcLatitude
+      src_longitude:
+        format: double
+        type: number
+        x-go-name: SrcLongitude
+      status:
+        type: string
+        x-go-name: Status
+      u_email:
+        type: string
+        x-go-name: UEmail
+    type: object
+    x-go-package: github.com/cab_booking_app/models
+  BookingRequest:
+    properties:
+      cab_id:
+        type: string
+        x-go-name: CabId
+      dest_latitude:
+        format: double
+        type: number
+        x-go-name: DestLatitude
+      dest_longitude:
+        format: double
+        type: number
+        x-go-name: DestLongitude
+      rush_hour_index:
+        format: double
+        type: number
+        x-go-name: RushHourIndex
+      src_latitude:
+        format: double
+        type: number
+        x-go-name: SrcLatitude
+      src_longitude:
+        format: double
+        type: number
+        x-go-name: SrcLongitude
+      u_email:
+        type: string
+        x-go-name: UEmail
+    type: object
+    x-go-package: github.com/cab_booking_app/models
+host: localhost:8000
+info:
+  description: Documentation of our CabBooking API.
+  title: CabBookingApp.
+  version: 1.0.0
+paths:
+  /bookCab:
+    post:
+      description: bookCab books a cab from souce to destination location
+      operationId: bookingId
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/BookingRequest'
+      responses:
+        "200":
+          $ref: '#/responses/booking'
+      tags:
+      - bookCab
+  /getBookingHistory:
+    get:
+      description: getBookingHistory gets the booking history of particular user
+      operationId: listOfBooking
+      parameters:
+      - in: query
+        name: email
+        type: string
+        x-go-name: Email
+      responses:
+        "200":
+          $ref: '#/responses/booking'
+      tags:
+      - getBookingHistory
+  /searchCab:
+    get:
+      description: searchCab gets the list of cabs available within the defined search radius perimeter
+      operationId: listOfAvailableCabs
+      parameters:
+      - format: double
+        in: query
+        name: latitude
+        type: number
+        x-go-name: Latitude
+      - format: double
+        in: query
+        name: longitude
+        type: number
+        x-go-name: Longitude
+      responses:
+        "200":
+          $ref: '#/responses/availableCabs'
+      tags:
+      - searchCab
+produces:
+- application/json
+responses:
+  availableCabs:
+    schema:
+      items:
+        $ref: '#/definitions/AvailableCabs'
+      type: array
+  booking:
+    schema:
+      $ref: '#/definitions/Booking'
+  bookingHistory:
+    schema:
+      items:
+        $ref: '#/definitions/Booking'
+      type: array
+schemes:
+- http
+swagger: "2.0"

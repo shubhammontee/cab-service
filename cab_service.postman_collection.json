@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "d83b27a0-b452-4308-9018-b6858151b14c",
+		"name": "cab_service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/bookCab",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n    \"src_latitude\":32.9697,\r\n\t\"src_longitude\":-96.80322,\r\n\t\"u_email\":\"user1@gmail.com\",\r\n\t\"dest_latitude\":29.46786,\r\n\t\"dest_longitude\":-98.53506,\r\n\t\"cab_id\": \"CAB1\",\r\n\t\"rush_hour_index\": 1.50\r\n    }\r\n\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/bookCab",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"bookCab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/searchCab?latitude=12.120000&longitude=76.680000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/searchCab?latitude=12.120000&longitude=76.680000",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"searchCab"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "12.120000"
+						},
+						{
+							"key": "longitude",
+							"value": "76.680000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/getBookingHistory?email=user1@gmail.com",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/getBookingHistory?email=user1@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getBookingHistory"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "user1@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
