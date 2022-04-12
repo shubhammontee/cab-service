@@ -20,3 +20,9 @@ Generate swagger docs: Make swagger
 Get Swagger UI: Make serve_swagger
 
 *this endpoint can be used for sending request and receiving response
+
+3. Endpoint
+
+  /bookCab             -> To book a cab
+  /searchCab           -> To search for a cab
+  /getBookingHistory   -> Get booking history of a user
